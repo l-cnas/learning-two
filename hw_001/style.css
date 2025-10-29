@@ -69,5 +69,6 @@ h1 {
     display: inline-block;
     vertical-align: top;
     margin: 1px 0px;
+    align-content: center;
     
 }
