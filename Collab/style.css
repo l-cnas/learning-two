@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.topPurple {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    background-color: #60267F;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 1px 0 0 0 ;
+}
+
+.topPurple .topPurplePara span {
+    text-decoration: underline;
+}
+
+.topHeader {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+}
+
+.linksContainer {
+    display: flex;
+}
