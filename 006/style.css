@@ -2,7 +2,7 @@
 body {
     background-image: url("http://127.0.0.1:5500/hw_001/eve logo.png");
     background-repeat: no-repeat;
-    background-position: cernter center;
+    background-position: center center;
     background-attachment: fixed;
     background-size: cover;
 }
