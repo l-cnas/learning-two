@@ -23,12 +23,25 @@
     height: 90px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: tomato;
+    padding: 0 50px;
 }
 
 .menu {
+    width: 670px;
     display: flex;
+    justify-content: space-between;
+    background-color: lawngreen;
 }
 
 .linksContainer {
+    width: 80%;
     display: flex;
+    background-color: darkkhaki;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+    color:#2b0236;
+    font-weight: 700;
 }
