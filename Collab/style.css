@@ -11,7 +11,7 @@
     background-color: #60267F;
     color: #ffffff;
     font-size: 16px;
-    padding: 1px 0 0 0 ;
+    padding: 1px 0 0 0;
 }
 
 .topPurple .topPurplePara span {
@@ -24,24 +24,84 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: tomato;
+    /* background-color: tomato; */
     padding: 0 50px;
+
+    box-shadow: 1px 5px 5px -4px rgba(105, 105, 105, 0.3);
+    -webkit-box-shadow: 1px 5px 5px -4px rgba(105, 105, 105, 0.3);
+    -moz-box-shadow: 1px 5px 5px -4px rgba(105, 105, 105, 0.3);
+
 }
 
 .menu {
     width: 670px;
     display: flex;
     justify-content: space-between;
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
 }
 
 .linksContainer {
     width: 80%;
     display: flex;
-    background-color: darkkhaki;
+    /* background-color: darkkhaki; */
     justify-content: space-between;
+    align-items: center;
     list-style: none;
     text-decoration: none;
-    color:#2b0236;
+    color: #2b0236;
     font-weight: 700;
+}
+
+.headerButton {
+    cursor: pointer;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 2px solid #9a54bc;
+    color: #9a54bc;
+
+}
+
+.headerButton:hover {
+    background-color: #9a54bc;
+    color: white;
+}
+
+/* button{
+    background-color: #9a54bc;
+    border: 2px solid #9a54bc;
+    padding: 10px;
+} */
+
+.firstSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+}
+
+.firstSection h1 {
+    font-size: 56px;
+    text-align: center;
+    color: #2b0236;
+    letter-spacing: 1.2;
+
+}
+
+.firstSection button {
+    padding: 15px;
+    background-color: #9a54bc;
+    border: 1px solid #9a54bc;
+    color: white;
+    border-radius: 7px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.firstSection button:hover {
+    background-color: #9a54bc;
+    color: white;
 }
