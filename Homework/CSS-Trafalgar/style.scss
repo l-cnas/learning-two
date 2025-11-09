@@ -1,6 +1,3 @@
-
-
-
 body {
     width: 1600px;
     margin: 0 auto;
@@ -70,7 +67,7 @@ body {
             width: 445px;
             height: 338px;
 
-            p:first-child {
+            &>p:first-child {
                 width: 427px;
                 height: 112px;
                 color: #000000;
@@ -81,10 +78,10 @@ body {
 
             }
 
-// Nesigauna tekstas sitoje vietoje. Nu niekaip neatsistoja kaip, kad turetu buti.
-// Gavosi.. font-weight: 300; buvo atsakymas. skaitosi kaip "ligt" fontas
+            // Nesigauna tekstas sitoje vietoje. Nu niekaip neatsistoja kaip, kad turetu buti.
+            // Gavosi.. font-weight: 300; buvo atsakymas. skaitosi kaip "ligt" fontas
 
-            p:nth-child(2) {
+            &>p:nth-child(2) {
                 width: 445px;
                 height: 96px;
                 color: #7D7987;
@@ -113,5 +110,23 @@ body {
             width: 693px;
             height: 598px;
         }
+    }
+}
+
+
+
+.firstSection {
+
+    .firstSectionTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+        .p_one {
+            font-size: 36px;
+            color: #000000;
+            line-height: 56px;
+        }
+
     }
 }
