@@ -82,6 +82,7 @@ body {
             }
 
 // Nesigauna tekstas sitoje vietoje. Nu niekaip neatsistoja kaip, kad turetu buti.
+// Gavosi.. font-weight: 300; buvo atsakymas. skaitosi kaip "ligt" fontas
 
             p:nth-child(2) {
                 width: 445px;
@@ -104,6 +105,7 @@ body {
                 background-color: #458ff6;
                 border-radius: 55px;
                 border: none;
+                cursor: pointer;
             }
         }
 
