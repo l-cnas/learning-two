@@ -172,3 +172,42 @@ body {
     width: 30%;
     justify-content: space-between;
 }
+
+.sectionCollabHelp {
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.collabHelpMainContainer {
+    height: 500px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.collabHelpLeftContainer {
+    background-color: aqua;
+    flex-direction: column;
+    height: 500px;
+    width: 500px;
+    margin-top: 16px;
+    justify-content: flex-start;
+}
+
+.collabHelpButtonContainer {
+    width: 100%;
+    padding: 2px
+}
+
+.collabHelpButtonContainer button {
+    width: 50%;
+    background-color: white;
+    border: 2px solid white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.collabHelpButtonContainer button:hover {
+    background-color: #60267F;
+    color: white;
+    cursor: pointer;
+}
