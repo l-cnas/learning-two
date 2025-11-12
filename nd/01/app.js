@@ -1,3 +1,14 @@
+function rand(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+// https://docs.google.com/document/d/1l2bivj7gFF_qIR-uV6P3c086TNrW0IPNUIf466bqGvs/edit?tab=t.0
+// https://in3.dev/nd/01/
+
+
+// 1.
 const h1 = document.querySelector('h1');
 h1.innerText = 1;
 
@@ -10,6 +21,40 @@ h3.innerText = 3;
 const h4 = document.querySelector('h1 + h2 + h3 + h4');
 h4.innerText = 4;
 
+
+// 2.
 const div = document.querySelector('div');
 
 div.style.backgroundColor = 'blue';
+div.style.height = '15px';
+div.style.width = '15px';
+
+const div2 = document.querySelector('div + div');
+
+div2.style.backgroundColor = 'red';
+div2.style.height = '15px';
+div2.style.width = '15px';
+div2.style.borderRadius = '50%';
+
+
+// 3.
+
+/// Randomai
+let skaicius1 = rand(0, 4);
+let skaicius2 = rand(0, 4);
+
+/// mano varai (let arba const)
+
+let didesnis = Math.max(skaicius1, skaicius2);
+let mazesnis = Math.min(skaicius1, skaicius2);
+
+
+/// Spanu reiksmes
+const span1 = document.querySelector('#go3 span');
+span1.innerText = didesnis;
+
+const span2 = document.querySelector('#go3 span + span');
+span2.innerText = mazesnis;
+
+const span3 = document.querySelector('#go3 span + span +span');
+span3.innerText = didesnis / mazesnis;

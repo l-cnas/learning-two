@@ -149,11 +149,26 @@ body {
 .buttonSectionElipses {
     top: 370px;
     cursor: pointer;
-    padding: 5px;
-    background-color: transparent;
+    padding: 5px 10px;
+    background-color: white;
     border-radius: 3px;
-    font-size: 12px;
-    font-weight: 700;
+    /* font-size: 12px;
+    font-weight: 700; */
     border: 2px solid var(--main-color-light);
     color: var(--main-color-light);
+}
+
+.buttonSectionElipses:hover {
+    color: white;
+    background-color: var(--main-color-light);
+}
+
+.sectionIcons {
+    flex-direction: column;
+    gap: 50px;
+}
+
+.containerIcons {
+    width: 30%;
+    justify-content: space-between;
 }
