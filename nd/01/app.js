@@ -58,3 +58,67 @@ span2.innerText = mazesnis;
 
 const span3 = document.querySelector('#go3 span + span +span');
 span3.innerText = didesnis / mazesnis;
+
+
+// 4.
+let rng1 = rand(50, 200);
+let rng2 = rand(50, 200);
+let rng3 = rand(50, 200);
+
+//pyp pyp pyp pyp pyp
+
+let small;
+let medium;
+let big;
+
+if (rng1 <= rng2 && rng1 <= rng3) {
+    small = rng1;
+    if (rng2 <= rng3) {
+        medium = rng2;
+        big = rng3;
+    } else {
+        medium = rng3;
+        big = rng2;
+    }
+} else if (rng2 <= rng1 && rng2 <= rng3) {
+    small = rng2;
+    if (rng1 <= rng3) {
+        medium = rng1;
+        big = rng3;
+    } else {
+        medium = rng3;
+        big = rng1;
+    }
+} else {
+    small = rng3;
+    if (rng1 <= rng2) {
+        medium = rng1;
+        big = rng2;
+    } else {
+        medium = rng2;
+        big = rng1;
+    }
+}
+
+
+
+
+const divas1 = document.querySelector('#go4 div');
+divas1.style.height = small + 'px';
+divas1.style.width = small + 'px';
+divas1.style.borderRadius = '50%';
+divas1.style.border = "3px solid black";
+
+
+const divas2 = document.querySelector('#go4 div + div');
+divas2.style.height = medium + 'px';
+divas2.style.width = medium + 'px';
+divas2.style.borderRadius = '50%';
+divas2.style.border = "3px solid black";
+
+
+const divas3 = document.querySelector('#go4 div + div + div');
+divas3.style.height = big + 'px';
+divas3.style.width = big + 'px';
+divas3.style.borderRadius = '50%';
+divas3.style.border = "3px solid black";
