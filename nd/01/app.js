@@ -56,7 +56,7 @@ span1.innerText = didesnis;
 const span2 = document.querySelector('#go3 span + span');
 span2.innerText = mazesnis;
 
-const span3 = document.querySelector('#go3 span + span +span');
+const span3 = document.querySelector('#go3 span + span + span');
 span3.innerText = didesnis / mazesnis;
 
 
