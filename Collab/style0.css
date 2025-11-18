@@ -12,6 +12,7 @@ body {
 :root {
     --main-color-ligth: #9A54BC;
     --main-color-dark: #60267F;
+    --main-text-color: #A79d9d;
 }
 
 .flex {
@@ -282,4 +283,51 @@ body {
 .card span {
     font-weight: 400;
     padding-left: 15px;
+}
+
+.readyToStart {
+    margin-top: 200px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.readyToStartTopP {
+    color: var(--main-text-color);
+}
+
+.readyToStrartTopDiv {
+    gap: 15px;
+}
+
+.monthly {
+    color: var(--main-text-color);
+}
+
+.yearly {
+    font-weight: 700;
+}
+
+.discount {
+    font-size: 14px;
+    background-color: #FFE87A;
+    padding: 5px 10px;
+}
+
+.readyToStartCard {
+    flex-direction: column;
+    border: 2px solid #AAAAAA;
+    width: 250px;
+    height: 400px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 25px;
+    gap: 25px;
+}
+
+.readyToStartCard ul {
+    margin-left: 18px;
+}
+
+.readyToStartCard p {
+    font-weight: 500;
 }
