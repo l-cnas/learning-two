@@ -444,18 +444,37 @@ body {
         align-items: center;
         flex-direction: column;
 
+
         .bgImgSectionFour {
             position: absolute;
-            z-index: -1;
+            z-index: 0;
             max-width: 1120px;
             max-height: 425px;
             margin: 15px 48px 62px 52px;
+        }
+
+        .bgImg5 {
+            position: absolute;
+            margin: 1px -1089px 0px 0px;
+            max-width: 131px;
+            max-height: 115px;
+            overflow: hidden;
+
+        }
+
+
+        .bgImg6 {
+            position: absolute;
+            margin: 279px 1083px 0px 0px;
+            z-index: -1;
         }
 
         .top {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 30px 0 0 0;
+            z-index: 1;
 
             h2 {
                 color: #ffffff;
@@ -476,11 +495,32 @@ body {
             display: flex;
             align-items: center;
             margin: 66px 0 0 0;
+            width: 75%;
+            justify-content: space-between;
+            z-index: 1;
 
             .bottomLeft {
                 display: flex;
                 align-items: center;
+                gap: 30px;
+                color: #ffffff;
+            }
+
+            .bottomRight {
+                font-size: 19px;
+                line-height: 30px;
+                color: #ffffff;
             }
         }
+
+        .bottomNav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 90px;
+            margin: 120px 0 0 0;
+            position: relative;
+        }
     }
+
 }
