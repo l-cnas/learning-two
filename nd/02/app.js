@@ -11,10 +11,10 @@ let a1 = rand(1, 3);
 let b1 = rand(1, 3);
 
 const miniFun = function (a, b) {
-    if (a <= b) {
+    if (a < b) {
         return animal = 'Bebras'
     } else {
-        if (a >= b) {
+        if (a > b) {
             return animal = 'Barsukas'
         } else {
             return animal = 'Briedis'
