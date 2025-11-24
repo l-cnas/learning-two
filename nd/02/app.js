@@ -7,8 +7,8 @@ function rand(min, max) {
 
 console.log(rand(0, 100), 'nd 02');
 
-let a1 = rand(1, 100);
-let b1 = rand(1, 100);
+let a1 = rand(1, 3);
+let b1 = rand(1, 3);
 
 const miniFun = function (a, b) {
     if (a <= b) {
