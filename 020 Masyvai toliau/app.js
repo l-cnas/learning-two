@@ -70,3 +70,51 @@ for (let i = 0; i < numbers.length; i++) {
 }
 
 console.log(findResultIndex);
+
+console.clear();
+
+// 1. Koks meškos numeris - numerį atspausdinti konsolėje
+
+const miskoZveris = document.querySelectorAll('ol li');
+let koIeskom = 'Meška';
+let rastas = -1;
+
+for (let i = 0; i < miskoZveris.length; i++) {
+    if (koIeskom == miskoZveris[i].innerText) {
+        rastas = i;
+        break;
+    }
+}
+
+console.log(koIeskom, 'kur radom? - ', rastas + 1, 'krume, netoli musu.');
+
+// 2. Sąraše varną nuspalvinkit baltai
+ 
+for (let i = 0; i < miskoZveris.length; i++) {
+    if ('Varna' == miskoZveris[i].innerText) {
+        rastas = i;
+        miskoZveris[i].style.color = 'white';
+        break;
+    }
+}
+
+// Sąraše visus išskyrus Pelėdą ir Gaidį nuspavlvinti orange
+
+for (let i = 0; i < allAnimalsLi.length; i++) {
+
+    if (allAnimalsLi[i].innerText == 'Pelėda' || allAnimalsLi[i].innerText == 'Gaidys') {
+        continue; // pradeda naują iteraciją (ciklo prasukimą toliau +1)
+    }
+
+    allAnimalsLi[i].style.color = 'orange';
+}
+
+
+// su if neigiama logika
+// for (let i = 0; i < allAnimalsLi.length; i++) {
+//
+//     if (allAnimalsLi[i].innerText != 'Pelėda' && allAnimalsLi[i].innerText != 'Gaidys') {
+//         allAnimalsLi[i].style.color = 'orange';
+//     }
+//
+// }
