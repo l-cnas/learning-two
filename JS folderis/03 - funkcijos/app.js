@@ -65,11 +65,11 @@ paskyra();
 
 const pilnametis = amzius => (amzius >= 18) ? console.log('Pilnametis') : console.log('Nepilnametis');
 
-    // if (amzius >= 18) {
-    //     console.log('Pilnametis');
-    // } else {
-    //     console.log('Nepilnametis');
-    // }
+// if (amzius >= 18) {
+//     console.log('Pilnametis');
+// } else {
+//     console.log('Nepilnametis');
+// }
 
 
 pilnametis(17);
@@ -77,7 +77,7 @@ pilnametis(18);
 
 console.clear();
 
-const pilnametis3 = amzius => console.log((amzius >= 18) ? 'Pilnametis': 'Nepilnametis');
+const pilnametis3 = amzius => console.log((amzius >= 18) ? 'Pilnametis' : 'Nepilnametis');
 
 pilnametis3(1);
 pilnametis3(10);
@@ -89,3 +89,15 @@ pilnametis3(100);
 const arLyginis = _ => console.log(_ % 2 === 0 ? 'Lyginis' : 'Nelyginis');
 
 arLyginis(12);
+
+let kmi = function (a, b) {
+    return (a / ((b / 100) * (b / 100)));
+}
+
+console.log(kmi(136, 176));
+
+function _(x, y) {
+    return (x * y);
+}
+
+console.log(_(5, 5));

@@ -58,7 +58,7 @@ const add5a = (a) => {
     return a + 5;
 }
 
-//Jeigu yra tik 1 parametras, galima praleist parametru sklistelius
+//Jeigu yra tik 1 parametras, galima praleist parametru sklistelius //Arrow
 const add5b = a => a + 5
 
 
