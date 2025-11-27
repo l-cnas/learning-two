@@ -213,3 +213,16 @@ function partition(arr, left, right) {
 quickSortPencils(pencils);
 
 console.log(pencils);
+
+console.clear();
+
+// 3. Sudėti du skaičius
+
+// Sukurti funkciją sum(a, b), kuri grąžina a + b rezultatą.
+ 
+
+let x = function(a, b) {
+    return = (a + b);
+}
+
+console.log(x(1, 2));

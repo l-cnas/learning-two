@@ -101,3 +101,21 @@ function _(x, y) {
 }
 
 console.log(_(5, 5));
+
+console.clear();
+
+// 3. Sudėti du skaičius
+
+// Sukurti funkciją sum(a, b), kuri grąžina a + b rezultatą.
+ 
+
+let x = function(a, b) {
+    return (a + b);
+}
+
+console.log(x(1, 2));
+
+let x2 = x => x**2;
+
+console.log(x2(11));
+
