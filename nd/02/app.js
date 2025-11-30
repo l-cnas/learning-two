@@ -83,3 +83,109 @@ const calc = function (a, b, c) {
 }
 
 console.log(calc(15, 3, '/'));
+
+
+// 6.
+
+function veiksmai(a, b) {
+    const suma = a + b;
+    const sandauga = a * b;
+    const obj = {
+        pirmas: a,
+        antras: b,
+        suma: suma,
+        sandauga: sandauga
+    };
+    return obj;
+}
+
+
+
+console.log(veiksmai(2, 2));
+
+// 7.
+
+const kvadratas = document.querySelector('.kvadratas');
+
+kvadratas.addEventListener('click', function () {
+    if (kvadratas.style.backgroundColor == 'skyblue') {
+        kvadratas.style.backgroundColor = 'crimson';
+    } else {
+        kvadratas.style.backgroundColor = 'skyblue';
+    }
+});
+
+// 8. 
+
+
+const button2 = document.querySelector('.antras');
+
+button2.addEventListener('click', function () {
+    let skaicius = Number(button2.innerText);
+    let dideja = ++skaicius;
+    button2.innerText = dideja;
+});
+
+// 9.
+
+const h2Elementas = document.querySelectorAll('h2');
+
+h2Elementas[1].style.color = 'black';
+
+const button3 = document.querySelector('.trecias');
+
+button3.addEventListener('click', function () {
+    if (h2Elementas[1].innerText == '6') {
+        return;
+    }
+
+    let h2Skaicius = rand(1, 6);
+
+    h2Elementas[1].innerText = h2Skaicius;
+
+    if (h2Skaicius != 6) {
+        return h2Elementas[1].innerText = h2Skaicius;
+    } else {
+        h2Elementas[1].innerText = h2Skaicius;
+        h2Elementas[1].style.color = 'red';
+        h2Skaicius = h2Skaicius;
+    }
+});
+
+
+// 10. 
+
+const calc2 = function (a, b, c) {
+    if (c == '*' && b == 0 || a == 0) {
+        return 'Is nulio nesidaugina!';
+    } else if (c == '/' && b == 0 || a == 0) {
+        return 'Is nulio nesidalina!';
+    } else if (c == '-') {
+        return (a - b);
+    } else if (c == '+') {
+        return (a + b);
+    } else if (c == '*') {
+        return (a * b);
+    } else if (c == '/') {
+        return (a / b);
+    }
+
+}
+
+console.log(calc2(15, 3, '/'));
+
+const kalkuliatorius = document.querySelector('.kalkuliatorius');
+const inputA = document.querySelector('.calcA');
+const inputB = document.querySelector('.calcB');
+const veiksmas = document.querySelector('.veiksmas');
+const rezultatas = document.querySelector('.rezultatas');
+
+
+kalkuliatorius.addEventListener('click', function () {
+    let a = Number(inputA.value);
+    let b = Number(inputB.value);
+    let c = veiksmas.value;
+    let ats = calc2(a, b, c);
+    rezultatas.innerText = ats;
+});
+
