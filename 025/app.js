@@ -36,7 +36,7 @@ berniukas.vardas = 'Tomukas';
 console.log(berniukas);
 
 
-const kazkas = {}; 
+const kazkas = {};
 
 
 const piestukai = []; // tuščias masyvas
@@ -119,5 +119,68 @@ if (getOnePenPrice(product1) < getOnePenPrice(product2)) {
 }
 
 
+console.clear();
+/*
+Naujos statybos name parduodami du butai (analogija product1 ir product2)
+ 
+Butas. numeris: 45; užbaigtumas: "euroremontas", balkonas: nėra, kambariai: virtuvė 10m2,
+miegamasis: 15m2, svetainė: 18m2; kaina 75500eur
+ 
+Butas. numeris: 12; užbaigtumas: "neįrengtas", balkonas: yra,  kambariai: virtuvė 9m2,
+miegamasis: 12m2, svetainė: 20m2, vaikų kambarys: 14m2; kaina 92500eur
+ 
+Klausimas pirmas: Kuris butas turi daugiau kambarių?
+Klausimas antras: Kurio buto kvadratinis metras yra brangesnis (nesikartojome šito, tiesiog kam
+per paprastas pirmas klausimas, kad turėtų ką veikti - tema masyvo metodai)
+ 
+*/
 
-   
+
+const butas1 = {
+    numeris: 45,
+    uzbaigtumas: "euroremontas",
+    balkonas: 0,
+    kambariai: [
+        { kambarys: 'virtuve', m2: 10 },
+        { kambarys: 'miegamasis', m2: 15 },
+        { kambarys: 'svetaine', m2: 28 },
+        { kambarys: 'vaikuKambarys', m2: 14 }
+    ],
+    kaina: 75500
+}
+
+const butas2 = {
+    numeris: 12,
+    uzbaigtumas: "neirengtas",
+    balkonas: 1,
+    kambariai: [
+        { kambarys: 'virtuve', m2: 9 },
+        { kambarys: 'miegamasis', m2: 12 },
+        { kambarys: 'svetaine', m2: 20 },
+        { kambarys: 'vaikuKambarys', m2: 14 }
+    ],
+    kaina: 92500
+};
+
+console.log('Klausimas pirmas: Kuris butas turi daugiau kambarių?');
+
+butas1.kambariai.length > butas2.kambariai.length ? console.log('Pirmame bute kambariu daugiau', butas1.kambariai.length) : console.log('Antrame bute kambariu daugiau', butas2.kambariai.length);
+
+console.log('Klausimas antras: Kurio buto kvadratinis metras yra brangesnis');
+
+let butas1m2 = 0;
+let butas2m2 =0;
+
+for (let i = 0; i < butas1.kambariai.length; i++) {
+    butas1m2 += butas1.kambariai[i].m2;
+}
+
+console.log('Pirmo buto m2 kaina: ', (butas1.kaina / butas1m2).toFixed(2), '€');
+
+for (let i = 0; i < butas2.kambariai.length; i++) {
+    butas2m2 += butas2.kambariai[i].m2;
+}
+
+console.log('Antro buto m2 kaina: ', (butas2.kaina / butas2m2).toFixed(2), '€');
+
+(butas1.kaina / butas1m2) < (butas2.kaina / butas2m2) ? console.log('Antro buto m2 brangesni!') : console.log('Pirmo buto m2 brangesni!');
