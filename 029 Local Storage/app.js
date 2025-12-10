@@ -95,3 +95,58 @@ renderList(); // šitas renderina pradžioje refrešinus puslapį
 */
 
 // CRUD
+
+// Spalvu array
+
+let spalvos;
+
+spalvos = localStorage.getItem('mano_spalvos');
+if (spalvos === null) {
+    spalvos = [];
+} else {
+    spalvos = JSON.parse(spalvos);
+}
+
+
+// Mano mygtukai
+const zalias = document.querySelector('.green');
+zalias.addEventListener('click', _ => {
+    spalvos.push('green');
+    localStorage.setItem('mano_spalvos', JSON.stringify(spalvos));
+    renderColors();
+});
+
+const raudonas = document.querySelector('.red');
+raudonas.addEventListener('click', _ => {
+    spalvos.push('red');
+    localStorage.setItem('mano_spalvos', JSON.stringify(spalvos));
+    renderColors();
+});
+
+const melynas = document.querySelector('.blue');
+melynas.addEventListener('click', _ => {
+    spalvos.push('blue');
+    localStorage.setItem('mano_spalvos', JSON.stringify(spalvos));
+    renderColors();
+});
+
+const clearBtn = document.querySelector('.clear');
+clearBtn.addEventListener('click', () => {
+    spalvos = [];
+    localStorage.removeItem('mano_spalvos');
+    renderColors();
+});
+
+const visosSpalvos = document.querySelector('.spalvosCia');
+
+function renderColors() {
+    visosSpalvos.innerHTML = '';
+    spalvos.forEach(spalva => {
+        const blokas = document.createElement('div');
+        blokas.classList.add('spalvosKv');
+        blokas.style.backgroundColor = spalva;
+        visosSpalvos.appendChild(blokas);
+    });
+}
+
+renderColors(); 
