@@ -1,0 +1,29 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+// Body seseliai, fonas, kad matytume kur musu puslapis. 
+body {
+    background: #e5e5e5;   // light gray outside the paper
+    padding: 20px 0;
+}
+
+// Main sekcija, visas puslapis le A4 formato. width:210mm = 794px, tipo A4 lapo plotis. ok cool. 
+#faktura {
+    width: 210mm;          // A4 width
+    margin: 0 auto;        // center it
+    background: white;     // paper color
+    padding: 20mm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15); // optional shadow for paper effect
+}
+
+#saskaitaNr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
