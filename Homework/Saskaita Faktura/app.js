@@ -15,6 +15,8 @@ function topData() {
 
     // Top sekcija.
     const topFaktura = document.querySelector('#saskaitaNr');
+    const pardavejas = document.querySelector('#pardavejas');
+    const pirkejas = document.querySelector('#pirkejas');
 
     //Numeris
     const pvmNr = document.createElement('p');
@@ -25,6 +27,21 @@ function topData() {
     const date = document.createElement('p');
     date.innerText = `Israsyta: ${pvmDate}`;
     topFaktura.appendChild(date);
+
+    // Pirkejas naudojant object.values, ima tik reiksmes.
+    for (const value of Object.values(data.company.buyer)) {
+        const p = document.createElement('p');
+        p.innerText = value;
+        pirkejas.appendChild(p);
+    }
+
+    //tas pats pardavejui
+    for (const value of Object.values(data.company.seller)) {
+        const p = document.createElement('p');
+        p.innerText = value;
+        pardavejas.appendChild(p);
+    }
+
 };
 
 
