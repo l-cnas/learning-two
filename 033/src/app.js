@@ -1,24 +1,16 @@
-import { v4 as uuidv4 } from 'uuid';
+import Ls from './Ls';
 
 console.log('CRUD');
 
-/*
-Naujo pridėjimas
-
-Create - vaizdas
-Store - veiksmas
-
-*/
 
 
 
-let LIST;
-const KEY = 'myFancyColorsList';
+let LS; // klasės Ls objektas (bus)
 
 
 const init = _ => {
-    readLocalStorage();
-    render();
+    LS = new Ls('myFancyColorsList'); // LS.list jau atsiranda kvadratukai su spalvom
+    render(LS.list);
     const createInput = document.querySelector('[data-create-color-input]');
     const createButton = document.querySelector('[data-create-color-button]');
 
@@ -27,17 +19,18 @@ const init = _ => {
         const dataToStore = {
             color
         }
-        Store(dataToStore);
+        LS.Store(dataToStore);
+        render(LS.list); // LS.list jau pakeistas klasėje
     });
 }
 
 
 
-const render = _ => {
+const render = list => {
     const listBin = document.querySelector('[data-colors-list]');
     const listRowTemplate = document.querySelector('[data-list-template]');
     listBin.innerHTML = '';
-    LIST.forEach(colorItem => {
+    list.forEach(colorItem => {
         const rowHtml = listRowTemplate.content.cloneNode(true);
         const colorSq = rowHtml.querySelector('[data-color-sq]');
 
@@ -58,7 +51,8 @@ const render = _ => {
             // e.target.dataset.id kreipomasis į atributą "data-id"
 
             const id = e.target.dataset.id;
-            Destroy(id);
+            LS.Destroy(id);
+            render(LS.list);
         });
 
 
@@ -79,8 +73,8 @@ const render = _ => {
                 color
             }
 
-            Update(id, dataToUpdate);
-
+            LS.Update(id, dataToUpdate);
+            render(LS.list);
         });
 
 
@@ -92,60 +86,6 @@ const render = _ => {
     });
 }
 
-//* CRUD CODE **//
 
-const readLocalStorage = _ => {
-    let data = localStorage.getItem(KEY);
-    if (null === data) {
-        LIST = [];
-    } else {
-        LIST = JSON.parse(data);
-    }
-}
-
-const writeLocalStorage = _ => {
-    let data = JSON.stringify(LIST);
-    localStorage.setItem(KEY, data);
-}
-
-
-/*
-Store vykdo naujo "daikto" įrašymą į saugyklą
-Turi gauti "daiktą"
-Turi "daiktui" priskirt ID ir įrašyti į saugyklą
-*/
-const Store = data => {
-    const id = uuidv4();
-    const dataToStore = {
-        ...data,
-        id
-    }
-    LIST.unshift(dataToStore);
-    writeLocalStorage();
-    render();
-}
-
-/*
-Destroy vykdo "daikto" pašalinimą iš saugyklos
-Turi gauti "daikto" identifikatorių
-Turi pašalinti daiktą su nurodytu identifikatorium
-*/
-const Destroy = id => {
-    LIST = LIST.filter(item => item.id != id);
-    writeLocalStorage();
-    render();
-}
-
-/*
-Update vykdo redaguoto "daikto" saugojimą saugykloje
-Turi gauti "daikto" identifikatorių ir daikto naujas savybes
-Turi persaugoti daiktą su nurodytu identifikatorium ir naujom savybėm
-*/
-
-const Update = (id, data) => {
-    LIST = LIST.map(item => item.id == id ? {...item, ...data, id} : item);
-    writeLocalStorage();
-    render();
-};
 
 init();
