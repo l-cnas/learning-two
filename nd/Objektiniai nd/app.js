@@ -50,20 +50,34 @@ rudaPinigine.skaiciuoti();
 rudaPinigine.ideti(4);
 rudaPinigine.skaiciuoti();
 
-// 3.
+// 3. + 4.
 
 class Troleibusas {
-    constructor () {
+
+    static visiKeleiviai = 0;
+
+    static bendrasKeleiviuSkaicius(skaicius) {
+        Troleibusas.visiKeleiviai += skaicius;
+    }
+
+    static keleiviuSkaiciusVisuoseTroleibusuose() {
+        console.log(`Siuo metu troleibuse vaziuoja ${Troleibusas.visiKeleiviai} keleiviai.`);
+    }
+
+// 3. apacioje
+    constructor() {
         this.keleiviuSkaicius = 0;
         this.ghost = 0;
     }
 
-    ilipa(keleivis){
+    ilipa(keleivis) {
         this.keleiviuSkaicius += keleivis;
+        Troleibusas.bendrasKeleiviuSkaicius(keleivis); // deda i visi keleiviai, cia 4tam reikalinga.
     }
 
     islipa(keleivis) {
         this.keleiviuSkaicius -= keleivis;
+        Troleibusas.bendrasKeleiviuSkaicius(keleivis);
     }
 
     vaziuoja() {
@@ -75,11 +89,21 @@ class Troleibusas {
             console.log(`Siuo metu vaziuoja ${this.keleiviuSkaicius} ir ${this.ghost} smeklu.\n Laikas zegnotis.`)
         }
     }
+
+
 }
 
 const troleibusas = new Troleibusas();
+const troleibusas2 = new Troleibusas();
 
 troleibusas.ilipa(15);
 troleibusas.vaziuoja();
 troleibusas.islipa(16);
 troleibusas.vaziuoja();
+
+troleibusas2.ilipa(25);
+troleibusas2.vaziuoja();
+troleibusas2.islipa(11);
+troleibusas2.vaziuoja();
+
+Troleibusas.keleiviuSkaiciusVisuoseTroleibusuose();
