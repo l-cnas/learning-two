@@ -108,6 +108,47 @@ app.get('/didesnis/:skaicius1/:skaicius2', (req, res) => {
 
 // --------------------
 
+/*
+https://duckduckgo.com/?q=karv%C4%97&t=chromentp&ia=web
+ 
+parametrai yra URL dalis po klaustuko ?
+parametras susideda iš kintamojo vardo ir reikšmės
+vardas rašomas prieš lygybės ženklą =
+reikšmė rašoma po lygybės ženklo =
+jei yra keli parametrai, jie atskiriami & ženklu
+ 
+*/
+
+// duomenų perdavimas su query (užklausos) parametrais
+// parametrai yra URL dalis po klaustuko ?
+app.get('/query', (req, res) => {
+    // paimame query parametrus iš req objekto
+    const spalva = req.query.color; // pvz: /query?color=red
+    const dydis = req.query.size;   // pvz: /query?size=10
+    res.send(`Spalva yra ${spalva}, dydis yra ${dydis}`);
+});
+ 
+// Padaryti kalkuliatorių skaičiuotuvą sumai per URL skaičiuoti
+// url su query  => turi parašyti "5 + 10 = 15"
+ 
+app.get('/query-suma', (req, res) => {
+    // paimame query parametrus iš req objekto
+    const sk1 = req.query.sk1; // pvz: /query?color=red
+    const sk2 = req.query.sk2;   // pvz: /query?size=10
+    const sk3 = +sk1 + +sk2;
+    res.send(`${sk1} + ${sk2} = ${sk3}`);
+});
+ 
+// Padaryti kalkuliatorių skaičiuotuvą sumai per URL skaičiuoti
+// url pirmas skaičius kaip parametras antras kaip query kintamasis  => turi parašyti "5 + 10 = 15"
+ 
+app.get('/query-du/:sk1', (req, res) => {
+    // paimame query parametrus iš req objekto
+    const sk1 = req.params.sk1;
+    const sk2 = req.query.sk2;
+    const sk3 = +sk1 + +sk2;
+    res.send(`${sk1} + ${sk2} = ${sk3}`);
+});
 
 
 
