@@ -1,8 +1,17 @@
 const express = require('express');
 const fs = require('fs'); // failų sistemos modulis-biblioteka
+const bodyParser = require('body-parser');
 const app = express();
 const port = 80;
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json()); // for parsing application/json
+ 
+
+// Failai folderyje 'public' bus pasiekiami per naršyklę
+app.use(express.static('public')); // Nurodome, kad statiniai failai bus iš 'public' katalogo
+ 
 
 // Dalis Router
 app.get('/', (req, res) => {
@@ -128,6 +137,8 @@ app.get('/query', (req, res) => {
     res.send(`Spalva yra ${spalva}, dydis yra ${dydis}`);
 });
  
+
+
 // Padaryti kalkuliatorių skaičiuotuvą sumai per URL skaičiuoti
 // url su query  => turi parašyti "5 + 10 = 15"
  
@@ -150,13 +161,34 @@ app.get('/query-du/:sk1', (req, res) => {
     res.send(`${sk1} + ${sk2} = ${sk3}`);
 });
 
+app.get('/search', (req, res) => {
+    const query = req.query.q;
+    const another = req.query.another;
+    res.send(`You searched for: ${query}. Another input: ${another}`);
+});
 
+// Padaryti kalkuliatorių skaičiuotuvą sumai su forma GET metodu skaičiuoti
+// Formoje suvedame du skaičius
+// atsidaro langas kuriame turi parašyti "5 + 10 = 15"
+ 
+app.get('/suma', (req, res) => {
+    const sk1 = +req.query.sk1;
+    const sk2 = +req.query.sk2;
+    res.send(`${sk1} + ${sk2} = ${sk1 + sk2}`);
+});
 
+//Loginai
 
-
-
-
-
+app.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    // res.send(`Username: ${username}, Password: ${password}`);
+    res.redirect('/ok');
+});
+ 
+app.get('/ok', (req, res) => {
+    res.send('Login successful!');
+});
 
 // Paleidžia serverį ir parašo terminale, kad viskas yra gerai.
 app.listen(port, () => {
