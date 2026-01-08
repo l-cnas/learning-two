@@ -1,9 +1,12 @@
 const express = require('express');
 const fs = require('fs'); // failų sistemos modulis
+const bodyParser = require('body-parser');
 const app = express();
 const port = 80;
 
 const { services } = require('./services');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
@@ -52,7 +55,14 @@ app.get('/contact', (req, res) => {
   // skaitome tris atskirus failus. Toks skaitymas galimas tik backend'e
   const top = fs.readFileSync('./html/top.html', 'utf8');
   const bottom = fs.readFileSync('./html/bottom.html', 'utf8');
-  const contact = fs.readFileSync('./html/contact.html', 'utf8');
+  let contact = fs.readFileSync('./html/contact.html', 'utf8');
+
+  const m = req.query.m;
+  if (m === 'ok') {
+    contact = contact.replace('{{successMessageDisplay}}', '');
+  } else {
+    contact = contact.replace('{{successMessageDisplay}}', 'style="display:none;"');
+  }
 
   const pageTitle = 'Contacts Page';
   const topWithTitle = top.replace('{{title}}', pageTitle);
@@ -61,43 +71,58 @@ app.get('/contact', (req, res) => {
 
 });
 
+app.post('/form-submit', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const message = req.body.message;
+
+  let data = fs.readFileSync('data.json', 'utf8'); // nuskaitome esamus duomenis
+  let json = JSON.parse(data); // paverčiame į JSON objektą
+  json.messages.push({ name, email, message }); // pridedame naują žinutę
+  data = JSON.stringify(json, null, 2); // paverčiame atgal į string'ą
+  fs.writeFileSync('data.json', data); // įrašome atgal į failą
+
+
+  res.redirect('/contact?m=ok');
+});
+
 // Servisai
 
 app.get('/service/:slug', (req, res) => {
-    // Iš URL paimame slug parametrą
-    const slug = req.params.slug;
-    // Randame atitinkamą paslaugą pagal slug
-    const service = services.find(s => s.slug === slug);
- 
-    // Tikriname, ar paslauga rasta
-    if (!service) {
-        // Jei paslauga nerasta, grąžiname 404 klaidą
-        return res.status(404).send('Service not found');
-    }
-   
-    // skaitome tris atskirus failus. Toks skaitymas galimas tik backend'e
-    const top = fs.readFileSync('./html/top.html', 'utf8');
-    const bottom = fs.readFileSync('./html/bottom.html', 'utf8');
-    const serviceHtml = fs.readFileSync('./html/service.html', 'utf8');
- 
-    // Sukuriame HTML sąrašą iš paslaugos savybių
-    let features = '';
-    service.features.forEach(feature => {
-        features += `<li>${feature}</li>`;
-    });
- 
-    // Pakeičiame vietas HTML faile su faktiniais duomenimis
-    let servicePage = serviceHtml.replace('{{icon}}', service.icon)
-                                 .replace('{{title}}', service.title)
-                                 .replace('{{description}}', service.description)
-                                 .replace('{{features}}', features);
- 
-    // Pakeičiame puslapio pavadinimą
-    const pageTitle = service.title;
-    const topWithTitle = top.replace('{{title}}', pageTitle);
- 
-    // Siunčiame galutinį HTML atsakymą
-    res.send(topWithTitle + servicePage + bottom);
+  // Iš URL paimame slug parametrą
+  const slug = req.params.slug;
+  // Randame atitinkamą paslaugą pagal slug
+  const service = services.find(s => s.slug === slug);
+
+  // Tikriname, ar paslauga rasta
+  if (!service) {
+    // Jei paslauga nerasta, grąžiname 404 klaidą
+    return res.status(404).send('Service not found');
+  }
+
+  // skaitome tris atskirus failus. Toks skaitymas galimas tik backend'e
+  const top = fs.readFileSync('./html/top.html', 'utf8');
+  const bottom = fs.readFileSync('./html/bottom.html', 'utf8');
+  const serviceHtml = fs.readFileSync('./html/service.html', 'utf8');
+
+  // Sukuriame HTML sąrašą iš paslaugos savybių
+  let features = '';
+  service.features.forEach(feature => {
+    features += `<li>${feature}</li>`;
+  });
+
+  // Pakeičiame vietas HTML faile su faktiniais duomenimis
+  let servicePage = serviceHtml.replace('{{icon}}', service.icon)
+    .replace('{{title}}', service.title)
+    .replace('{{description}}', service.description)
+    .replace('{{features}}', features);
+
+  // Pakeičiame puslapio pavadinimą
+  const pageTitle = service.title;
+  const topWithTitle = top.replace('{{title}}', pageTitle);
+
+  // Siunčiame galutinį HTML atsakymą
+  res.send(topWithTitle + servicePage + bottom);
 });
 
 
