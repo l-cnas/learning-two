@@ -35,7 +35,7 @@ app.post('/items', (req, res) => {
     // Pridedam naują prekę į esamų prekių masyvą
     products.push(newItem);
     // Išsaugom atnaujintą prekių masyvą atgal į products.json failą
-     fs.writeFileSync('products.json', JSON.stringify(products, null, 2));
+    fs.writeFileSync('products.json', JSON.stringify(products, null, 2));
 
 
     res.send({
@@ -44,6 +44,20 @@ app.post('/items', (req, res) => {
         item: newItem
     });
 
+});
+
+// Visų prekių gavimas
+app.get('/items', (req, res) => {
+    // skaitom failą kaip tekstą
+    const productsData = fs.readFileSync('products.json', 'utf-8');
+    // konvertuojam tekstą į JavaScript masyvą
+    const products = JSON.parse(productsData);
+    // siunčiame objektą, kuris yra verčiamas į JSON formato tekstą
+    res.send({
+        message: 'Items retrieved successfully',
+        status: 'success',
+        items: products
+    });
 });
 
 app.listen(port, () => {
