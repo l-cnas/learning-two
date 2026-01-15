@@ -55,6 +55,7 @@ h1 {
     background-color: beige;
     padding: 5px 10px;
     min-width: 90%;
+    border-radius: 5px;
 
 }
 
@@ -68,7 +69,14 @@ h1 {
 .taskList li span {
     margin-left: 10px;
     color: black;
+
     /* padding: 10px 10px; */
+}
+
+.taskButtons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
 }
 
 .editBtn {
@@ -78,3 +86,12 @@ h1 {
 .deleteBtn {
     background-color: crimson;
 }
+
+.editBtn,
+.deleteBtn {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
