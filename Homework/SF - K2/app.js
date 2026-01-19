@@ -1,6 +1,7 @@
 
 
 let data; // Tuscias variable, kur sukisim viska gauta is API
+const k3_KEY = "k3_invList";
 
 // Prasitestinam, kisam viska i funkcija. 
 // Fakturos virsus
@@ -285,6 +286,51 @@ function sumaZodziais(bendra) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 
 }
+
+// K3 dalis - sukurt save/edit/perziura.
+
+//Mygtukai
+document.querySelector("#btnSave").addEventListener("click", saveCurrentInvoice);
+document.querySelector("#btnRefresh").addEventListener("click", () => {
+    location.reload();
+});
+document.querySelector("#btnPrint").addEventListener("click", () => window.print());
+document.querySelector("#btnList").addEventListener("click", () => {
+  window.location.href = "list.html";
+});
+
+
+
+// Save funkcija, su id, etc. 
+function saveCurrentInvoice() {
+    // Jei dar nera data (invoice is API), tai nieko nedarom
+    if (!data) return;
+
+    // kuriam id.
+    const invId = Date.now();
+
+    // sudedam viska i viena, kad sudet i local storage.
+    const pack = {
+        id: invId,
+        savedAt: Date.now(),
+        data: data
+    };
+
+    //Cia paimu savo invoice is ls, jei jie yra. Jei tuscia kuriu nauja array.
+    let invList = JSON.parse(localStorage.getItem(k3_KEY));
+
+    if (invList === null) {
+        invList = [];
+    }
+
+    //Pridedu dabartini invoice prie listo ls.
+    invList.push(pack);
+
+    //sudedam viska atgal i ls
+    localStorage.setItem(k3_KEY, JSON.stringify(invList));
+}
+
+
 
 
 
